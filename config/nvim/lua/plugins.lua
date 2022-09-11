@@ -3,7 +3,6 @@ return require('packer').startup(function(use)
 
   -- appearance
   use 'EdenEast/nightfox.nvim'
-  use 'hrsh7th/vim-vsnip'
 
   -- functional
   use 'nvim-treesitter/nvim-treesitter'
@@ -27,7 +26,18 @@ return require('packer').startup(function(use)
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   }
 
+  -- snippets
+  use 'L3MON4D3/LuaSnip'
+	use 'ytkimirti/friendly-snippets'
+  use 'saadparwaiz1/cmp_luasnip'
+  
   -- other
+
+  use {
+    'L3MON4D3/LuaSnip',
+    tag = "v<CurrentMajor>.*"
+  }
+  use 'rafamadriz/friendly-snippets'
 
   use {
     'phaazon/hop.nvim',

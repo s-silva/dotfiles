@@ -29,3 +29,5 @@ keymap('n', '<Leader>hj', '<cmd> HopLineStart <cr>')
 
 -- other bindings
 keymap('n', '<Leader>gg', '<cmd> LazyGit <cr>')
+keymap('i', '<C-f', '<Plug>luasnip-next-choice')
+keymap('s', '<C-f', '<Plug>luasnip-next-choice')
