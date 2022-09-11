@@ -1,25 +1,31 @@
--- Material Theme config
-vim.g.material_style = 'deep ocean'
-
-require('material').setup({
-  lualine_style = 'stealth',
-	contrast = {
-		sidebars = true,
-		floating_windows = true,
-	},
-	italics = {
-		keywords = true,
-		functions = true,
-	},
-	contrast_filetypes = {
-		'terminal',
-		'packer',
-		'qf',
-	},
-	disable = {
-		borders = false,
-		eob_lines = true
-	}
+-- Theme config
+require('nightfox').setup({
+  options = {
+    transparent = false,    -- Disable setting background
+    terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+    dim_inactive = true,   -- Non focused panes set to alternative background
+    styles = {              -- Style to be applied to different syntax groups
+      comments = "NONE",    -- Value is any valid attr-list value `:help attr-list`
+      conditionals = "NONE",
+      constants = "NONE",
+      functions = "NONE",
+      keywords = "NONE",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+    },
+    inverse = {             -- Inverse highlight for different types
+      match_paren = false,
+      visual = false,
+      search = false,
+    }
+  },
+  palettes = {},
+  specs = {},
+  groups = {},
 })
 
-vim.cmd 'colorscheme material'
+-- setup must be called before loading
+vim.cmd("colorscheme carbonfox")
