@@ -7,6 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('plugins')
+require('plugins.dashboard')
 require('plugins.treesitter')
 require('plugins.lualine')
 require('plugins.nvim-tree')
@@ -18,6 +19,7 @@ require('plugins.comment')
 require('plugins.toggle-term')
 require('plugins.lazygit')
 require('plugins.luasnip')
+require('plugins.neogen')
 require('plugins.lsp.config')
 require('plugins.lsp.cmp')
 require('plugins.lsp.null-ls')

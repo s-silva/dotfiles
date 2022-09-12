@@ -3,6 +3,7 @@ return require('packer').startup(function(use)
 
   -- appearance
   use 'EdenEast/nightfox.nvim'
+  use 'glepnir/dashboard-nvim'
 
   -- functional
   use 'nvim-treesitter/nvim-treesitter'
@@ -11,6 +12,7 @@ return require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'akinsho/nvim-toggleterm.lua'
   use 'kdheepak/lazygit.nvim'
+  use 'danymat/neogen'
 
   -- lsp related
   use {
@@ -66,6 +68,8 @@ return require('packer').startup(function(use)
       'nvim-lua/plenary.nvim' 
     }
   }
+
+  use 'nvim-telescope/telescope-project.nvim'
 
   use {
     'nvim-telescope/telescope-fzf-native.nvim', 

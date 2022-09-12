@@ -4,6 +4,7 @@ keymap('n', '<Space>', '')
 vim.g.mapleader = ' '
 
 keymap('n', '<Leader>f', _find_files)
+keymap('n', '<Leader>F', '<cmd> Telescope find_files <cr>')
 keymap('n', '<Leader>o', '<cmd> Telescope oldfiles <cr>')
 keymap('n', '<Leader>g', '<cmd> Telescope live_grep <cr>')
 keymap('n', '<Leader>b', '<cmd> Telescope buffers <cr>')
@@ -27,7 +28,10 @@ keymap('n', '<Leader>di', '<Plug>(toggle-lsp-diag-update_in_insert)')
 keymap('n', '<Leader>hw', '<cmd> HopWord <cr>')
 keymap('n', '<Leader>hj', '<cmd> HopLineStart <cr>')
 
+-- neogen
+keymap('n', '<Leader>c', ':lua require("neogen").generate()<CR>')
+
 -- other bindings
 keymap('n', '<Leader>gg', '<cmd> LazyGit <cr>')
-keymap('i', '<C-f', '<Plug>luasnip-next-choice')
-keymap('s', '<C-f', '<Plug>luasnip-next-choice')
+keymap('i', '<C-f>', '<Plug>luasnip-next-choice')
+keymap('s', '<C-f>', '<Plug>luasnip-next-choice')
