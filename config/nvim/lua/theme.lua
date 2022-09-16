@@ -20,6 +20,9 @@ require('nightfox').setup({
       match_paren = false,
       visual = false,
       search = false,
+    },
+    modules = {
+      hop = false
     }
   },
   palettes = {},
@@ -28,4 +31,4 @@ require('nightfox').setup({
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme carbonfox")
+vim.cmd("colorscheme nightfox")

@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -107,7 +112,7 @@ _G.packer_plugins = {
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/ytkimirti/friendly-snippets"
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -219,6 +224,11 @@ _G.packer_plugins = {
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-project.nvim"] = {
+    loaded = true,
+    path = "/Users/san/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
+    url = "https://github.com/nvim-telescope/telescope-project.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -228,10 +238,32 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/toggle-lsp-diagnostics.nvim",
     url = "https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  },
+  ["tree-climber.nvim"] = {
+    loaded = true,
+    path = "/Users/san/.local/share/nvim/site/pack/packer/start/tree-climber.nvim",
+    url = "https://github.com/drybalka/tree-climber.nvim"
+  },
+  ["twilight.nvim"] = {
+    loaded = true,
+    path = "/Users/san/.local/share/nvim/site/pack/packer/start/twilight.nvim",
+    url = "https://github.com/folke/twilight.nvim"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/Users/san/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)

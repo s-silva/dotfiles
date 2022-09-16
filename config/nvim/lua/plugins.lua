@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
   -- appearance
   use 'EdenEast/nightfox.nvim'
   use 'glepnir/dashboard-nvim'
+  use 'folke/twilight.nvim'
+  use 'folke/zen-mode.nvim'
 
   -- functional
   use 'nvim-treesitter/nvim-treesitter'
@@ -13,6 +15,7 @@ return require('packer').startup(function(use)
   use 'akinsho/nvim-toggleterm.lua'
   use 'kdheepak/lazygit.nvim'
   use 'danymat/neogen'
+  use 'drybalka/tree-climber.nvim'
 
   -- lsp related
   use {
@@ -30,19 +33,18 @@ return require('packer').startup(function(use)
 
   -- snippets
   use 'L3MON4D3/LuaSnip'
-	use 'ytkimirti/friendly-snippets'
-  use 'saadparwaiz1/cmp_luasnip'
-  
-  -- other
-
-  use {
-    'L3MON4D3/LuaSnip',
-    tag = "v<CurrentMajor>.*"
-  }
   use 'rafamadriz/friendly-snippets'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  -- other
+-- use {
+--   'kyazdani42/nvim-tree.lua',
+--   requires = 'kyazdani42/nvim-web-devicons',
+-- }
 
   use {
     'phaazon/hop.nvim',
+    branch = 'v2',
     as = 'hop'
   }
 
@@ -69,15 +71,12 @@ return require('packer').startup(function(use)
     }
   }
 
-  use 'nvim-telescope/telescope-project.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
   use {
     'nvim-telescope/telescope-fzf-native.nvim', 
     run = 'make' 
   }
 
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
+  use 'nvim-telescope/telescope-project.nvim'
 end)

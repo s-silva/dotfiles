@@ -6,12 +6,9 @@ vim.g.mapleader = ' '
 keymap('n', '<Leader>f', _find_files)
 keymap('n', '<Leader>F', '<cmd> Telescope find_files <cr>')
 keymap('n', '<Leader>o', '<cmd> Telescope oldfiles <cr>')
-keymap('n', '<Leader>g', '<cmd> Telescope live_grep <cr>')
+keymap('n', '<Leader>lg', '<cmd> Telescope live_grep <cr>')
 keymap('n', '<Leader>b', '<cmd> Telescope buffers <cr>')
-
--- nvim-tree bindings
-keymap('n', '<Leader>n', '<cmd> NvimTreeFocus <cr>')
-keymap('n', '<Leader>m', '<cmd> NvimTreeToggle <cr>')
+keymap('n', '<Leader>n', '<cmd> Telescope file_browser <cr>')
 
 -- lsp bindings
 keymap('n', '<Leader>lf', ':lua vim.lsp.buf.formatting() <cr>')
@@ -25,13 +22,30 @@ keymap('n', '<Leader>dv', '<Plug>(toggle-lsp-diag-vtext)')
 keymap('n', '<Leader>di', '<Plug>(toggle-lsp-diag-update_in_insert)')
 
 -- hop bindings
-keymap('n', '<Leader>hw', '<cmd> HopWord <cr>')
-keymap('n', '<Leader>hj', '<cmd> HopLineStart <cr>')
+keymap({ 'n', 'v' }, '<Leader><space>', '<cmd> HopWord <cr>')
+keymap({ 'n', 'v' }, '<Leader>hw', '<cmd> HopWord <cr>')
+keymap({ 'n', 'v' }, '<Leader>hj', '<cmd> HopLineStart <cr>')
 
 -- neogen
-keymap('n', '<Leader>c', ':lua require("neogen").generate()<CR>')
+keymap('n', '<Leader>c', ':lua require("neogen").generate()<CR>', { silent = true })
 
 -- other bindings
 keymap('n', '<Leader>gg', '<cmd> LazyGit <cr>')
 keymap('i', '<C-f>', '<Plug>luasnip-next-choice')
 keymap('s', '<C-f>', '<Plug>luasnip-next-choice')
+
+-- zen/twilight
+keymap('n', '<Leader>z', ':lua require("zen-mode").toggle()<CR>', { silent = true })
+keymap('n', '<Leader>t', ':lua require("twilight").toggle()<CR>', { silent = true })
+
+-- tree-climber
+local tcopts = {noremap = true, silent = true}
+keymap({'n', 'v', 'o'}, '<C-h>', require('tree-climber').goto_parent, tcopts)
+keymap({'n', 'v', 'o'}, '<C-l>', require('tree-climber').goto_child, tcopts)
+keymap({'n', 'v', 'o'}, '<C-j>', require('tree-climber').goto_next, tcopts)
+keymap({'n', 'v', 'o'}, '<C-k>', require('tree-climber').goto_prev, tcopts)
+keymap({'n', 'v', 'o'}, '<A-Left>', require('tree-climber').goto_parent, tcopts)
+keymap({'n', 'v', 'o'}, '<A-Right>', require('tree-climber').goto_child, tcopts)
+keymap({'n', 'v', 'o'}, '<A-Down>', require('tree-climber').goto_next, tcopts)
+keymap({'n', 'v', 'o'}, '<A-Up>', require('tree-climber').goto_prev, tcopts)
+keymap({'v', 'o'}, 'in', require('tree-climber').select_node, tcopts)

@@ -44,3 +44,6 @@ luac.out
 
 # testing
 testing
+
+# packer
+config/nvim/plugin
