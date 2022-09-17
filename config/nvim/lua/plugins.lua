@@ -10,7 +10,6 @@ return require('packer').startup(function(use)
   -- functional
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'karb94/neoscroll.nvim'
   use 'numToStr/Comment.nvim'
   use 'akinsho/nvim-toggleterm.lua'
   use 'kdheepak/lazygit.nvim'
@@ -35,12 +34,6 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
   use 'saadparwaiz1/cmp_luasnip'
-
-  -- other
--- use {
---   'kyazdani42/nvim-tree.lua',
---   requires = 'kyazdani42/nvim-web-devicons',
--- }
 
   use {
     'phaazon/hop.nvim',
