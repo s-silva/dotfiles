@@ -49,3 +49,7 @@ keymap({'n', 'v', 'o'}, '<A-Right>', require('tree-climber').goto_child, tcopts)
 keymap({'n', 'v', 'o'}, '<A-Down>', require('tree-climber').goto_next, tcopts)
 keymap({'n', 'v', 'o'}, '<A-Up>', require('tree-climber').goto_prev, tcopts)
 keymap({'v', 'o'}, 'in', require('tree-climber').select_node, tcopts)
+
+-- user
+keymap('n', '<Leader>r', compile_command, { silent = true })
+keymap('n', '<Leader>a', switch_source_header)
