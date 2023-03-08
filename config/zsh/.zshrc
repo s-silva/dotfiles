@@ -47,6 +47,7 @@ alias ll='exa -l --color=always --group-directories-first --icons --git'
 alias lt='exa -l --tree --level=2 --color=always --group-directories-first --icons --git'
 alias l.='exa -a | rg "^\."'
 alias icat='kitty +kitten icat'
+alias popy='poetry run python manage.py '
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -58,12 +59,15 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 source /Users/san/.config/broot/launcher/bash/br
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Volumes/Work/ai/google-cloud-sdk/path.zsh.inc' ]; then . '/Volumes/Work/ai/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Volumes/Work/ai/google-cloud-sdk/completion.zsh.inc' ]; then . '/Volumes/Work/ai/google-cloud-sdk/completion.zsh.inc'; fi
-
 # initialize starship
 eval "$(starship init zsh)"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/san/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/san/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/san/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/san/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

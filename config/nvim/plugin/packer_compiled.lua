@@ -154,11 +154,6 @@ _G.packer_plugins = {
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/neogen",
     url = "https://github.com/danymat/neogen"
   },
-  ["neoscroll.nvim"] = {
-    loaded = true,
-    path = "/Users/san/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
-    url = "https://github.com/karb94/neoscroll.nvim"
-  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -183,11 +178,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua",
     url = "https://github.com/akinsho/nvim-toggleterm.lua"
-  },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/Users/san/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -218,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/san/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/Users/san/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,

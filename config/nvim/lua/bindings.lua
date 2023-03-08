@@ -8,7 +8,8 @@ keymap('n', '<Leader>F', '<cmd> Telescope find_files <cr>')
 keymap('n', '<Leader>o', '<cmd> Telescope oldfiles <cr>')
 keymap('n', '<Leader>lg', '<cmd> Telescope live_grep <cr>')
 keymap('n', '<Leader>b', '<cmd> Telescope buffers <cr>')
-keymap('n', '<Leader>n', '<cmd> Telescope file_browser path=%:p:h <cr>')
+keymap('n', '<Leader>N', '<cmd> Telescope file_browser <cr>')
+keymap('n', '<Leader>n', '<cmd> Telescope file_browser path=%:p:h select_buffer=true <cr>')
 
 -- lsp bindings
 keymap('n', '<Leader>lf', ':lua vim.lsp.buf.formatting() <cr>')
