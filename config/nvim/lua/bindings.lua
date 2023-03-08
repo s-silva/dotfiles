@@ -8,11 +8,19 @@ keymap('n', '<Leader>F', '<cmd> Telescope find_files <cr>')
 keymap('n', '<Leader>o', '<cmd> Telescope oldfiles <cr>')
 keymap('n', '<Leader>lg', '<cmd> Telescope live_grep <cr>')
 keymap('n', '<Leader>b', '<cmd> Telescope buffers <cr>')
-keymap('n', '<Leader>n', '<cmd> Telescope file_browser <cr>')
+keymap('n', '<Leader>n', '<cmd> Telescope file_browser path=%:p:h <cr>')
 
 -- lsp bindings
 keymap('n', '<Leader>lf', ':lua vim.lsp.buf.formatting() <cr>')
 keymap('n', '<Leader>lF', ':lua vim.lsp.buf.range_formatting() <cr>')
+keymap("n", "<Leader>ld",  ':lua vim.lsp.buf.definition() <cr>')
+keymap("n", "<Leader>ll",  ':lua vim.lsp.buf.hover() <cr>')
+keymap("n", "<Leader>li",  ':lua vim.lsp.buf.implementation() <cr>')
+keymap("n", "<Leader>ls",  ':lua vim.lsp.buf.signature_help() <cr>')
+keymap("n", "<Leader>ltd", ':lua vim.lsp.buf.type_definition() <cr>')
+keymap("n", "<Leader>lr",  ':lua vim.lsp.buf.references() <cr>')
+keymap("n", "<Leader>lsd", ':lua vim.lsp.buf.document_symbol() <cr>')
+keymap("n", "<Leader>lsw", ':lua vim.lsp.buf.workspace_symbol() <cr>')
 
 -- lsp diagnostics
 keymap('n', '<Leader>dd', '<cmd> ToggleDiag <cr>')
@@ -49,3 +57,7 @@ keymap({'n', 'v', 'o'}, '<A-Right>', require('tree-climber').goto_child, tcopts)
 keymap({'n', 'v', 'o'}, '<A-Down>', require('tree-climber').goto_next, tcopts)
 keymap({'n', 'v', 'o'}, '<A-Up>', require('tree-climber').goto_prev, tcopts)
 keymap({'v', 'o'}, 'in', require('tree-climber').select_node, tcopts)
+
+-- user
+keymap('n', '<Leader>r', compile_command, { silent = true })
+keymap('n', '<Leader>a', switch_source_header)

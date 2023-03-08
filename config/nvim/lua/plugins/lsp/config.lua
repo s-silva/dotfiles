@@ -3,7 +3,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = { 'sumneko_lua', 'tsserver', 'eslint', 'cssls', 'html' }
+local servers = { 'sumneko_lua', 'tsserver', 'eslint', 'cssls', 'html', 'rust_analyzer' }
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -28,3 +28,18 @@ nvim_lsp.tsserver.setup({
     client.resolved_capabilities.document_formatting = false
   end,
 })
+
+nvim_lsp.clangd.setup {
+  cmd = {
+    'clangd',
+    '--index',
+    '--background-index',
+    '--suggest-missing-includes',
+    '--clang-tidy',
+    '--header-insertion=iwyu',
+    '--function-arg-placeholders',
+    '--completion-style=detailed',
+    '--log=verbose',
+  },
+  capabilities = capabilities
+}
