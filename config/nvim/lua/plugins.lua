@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
   use 'danymat/neogen'
   use 'drybalka/tree-climber.nvim'
+  use 'kyazdani42/nvim-web-devicons'
 
   -- lsp related
   use {
@@ -54,6 +55,11 @@ return require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons',
       opt = true
     }
+  }
+
+  use {
+    'jakemason/ouroboros',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use {
