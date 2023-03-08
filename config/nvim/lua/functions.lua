@@ -11,7 +11,8 @@ end
 -- user
 function compile_command()
   vim.cmd(':silent exe "!tmux send -t 1 \'clear\' Enter"')
-  vim.cmd(':silent exe "!tmux send -t 1 \'yarn open \'' .. vim.fn.expand('%:p') .. '\'\' Enter"')
+  -- vim.cmd(':silent exe "!tmux send -t 1 \'yarn open \'' .. vim.fn.expand('%:p') .. '\'\' Enter"')
+  vim.cmd(':silent exe "!tmux send -t 1 \'./compile.sh\' Enter"')
 end
 
 -- switch between header/source files

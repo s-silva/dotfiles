@@ -8,11 +8,19 @@ keymap('n', '<Leader>F', '<cmd> Telescope find_files <cr>')
 keymap('n', '<Leader>o', '<cmd> Telescope oldfiles <cr>')
 keymap('n', '<Leader>lg', '<cmd> Telescope live_grep <cr>')
 keymap('n', '<Leader>b', '<cmd> Telescope buffers <cr>')
-keymap('n', '<Leader>n', '<cmd> Telescope file_browser <cr>')
+keymap('n', '<Leader>n', '<cmd> Telescope file_browser path=%:p:h <cr>')
 
 -- lsp bindings
 keymap('n', '<Leader>lf', ':lua vim.lsp.buf.formatting() <cr>')
 keymap('n', '<Leader>lF', ':lua vim.lsp.buf.range_formatting() <cr>')
+keymap("n", "<Leader>ld",  ':lua vim.lsp.buf.definition() <cr>')
+keymap("n", "<Leader>ll",  ':lua vim.lsp.buf.hover() <cr>')
+keymap("n", "<Leader>li",  ':lua vim.lsp.buf.implementation() <cr>')
+keymap("n", "<Leader>ls",  ':lua vim.lsp.buf.signature_help() <cr>')
+keymap("n", "<Leader>ltd", ':lua vim.lsp.buf.type_definition() <cr>')
+keymap("n", "<Leader>lr",  ':lua vim.lsp.buf.references() <cr>')
+keymap("n", "<Leader>lsd", ':lua vim.lsp.buf.document_symbol() <cr>')
+keymap("n", "<Leader>lsw", ':lua vim.lsp.buf.workspace_symbol() <cr>')
 
 -- lsp diagnostics
 keymap('n', '<Leader>dd', '<cmd> ToggleDiag <cr>')
