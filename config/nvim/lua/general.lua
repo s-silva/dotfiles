@@ -37,3 +37,5 @@ vim.cmd('command CDD cd %:p:h')
 -- Mouse scrolling set to one line
 -- vim.cmd('map <ScrollWheelUp> <C-Y>')
 -- vim.cmd('map <ScrollWheelDown> <C-E>')
+
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
