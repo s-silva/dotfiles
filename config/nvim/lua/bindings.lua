@@ -62,3 +62,7 @@ keymap({'v', 'o'}, 'in', require('tree-climber').select_node, tcopts)
 -- user
 keymap('n', '<Leader>r', compile_command, { silent = true })
 keymap('n', '<Leader>a', switch_source_header)
+
+-- neotree
+keymap('n', '<Leader><Tab>', '<cmd> Neotree focus <cr>')
+
