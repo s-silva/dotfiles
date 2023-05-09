@@ -3,7 +3,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'sumneko_lua', 'tsserver', 'eslint', 'cssls', 'html', 'rust_analyzer' }
+local servers = { 'lua_ls', 'tsserver', 'eslint', 'cssls', 'html', 'rust_analyzer' }
 
 require('mason').setup()
 require('mason-lspconfig').setup({

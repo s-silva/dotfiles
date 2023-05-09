@@ -2,7 +2,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- appearance
-  use 'EdenEast/nightfox.nvim'
+  -- use 'EdenEast/nightfox.nvim'
+  use "sainnhe/gruvbox-material"
   use 'glepnir/dashboard-nvim'
   use 'folke/twilight.nvim'
   use 'folke/zen-mode.nvim'
@@ -15,7 +16,7 @@ return require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
   use 'danymat/neogen'
   use 'drybalka/tree-climber.nvim'
-  use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-tree/nvim-web-devicons'
 
   -- lsp related
   use {
@@ -36,6 +37,8 @@ return require('packer').startup(function(use)
   use 'rafamadriz/friendly-snippets'
   use 'saadparwaiz1/cmp_luasnip'
 
+  use 'liuchengxu/vista.vim'
+
   use {
     'phaazon/hop.nvim',
     branch = 'v2',
@@ -49,11 +52,32 @@ return require('packer').startup(function(use)
     }
   }
 
+  use "lukas-reineke/indent-blankline.nvim"
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+      }
+    end
+  }
+
   use {
     'hoob3rt/lualine.nvim',
     requires = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
       opt = true
+    }
+  }
+
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = "v2.x",
+    requires = { 
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
     }
   }
 
