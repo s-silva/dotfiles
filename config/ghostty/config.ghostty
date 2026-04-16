@@ -1,0 +1,38 @@
+macos-titlebar-proxy-icon = hidden
+title = " "
+window-padding-x = 8
+
+background = #12191b
+foreground = #aec2c8
+selection-background = #aec2c8
+selection-foreground = #12191b
+cursor-color = #aec2c8
+cursor-text = #12191b
+palette = 0= #12191b
+palette = 1= #d04c33
+palette = 2= #6bbdac
+palette = 3= #ed8850
+palette = 4= #2c97b3
+palette = 5= #da566c
+palette = 6= #3e9bb4
+palette = 7= #8ea2a9
+palette = 8= #51676e
+palette = 9= #ed664b
+palette = 10= #6bbdac
+palette = 11= #F0D182
+palette = 12= #bfced3
+palette = 13= #e48546
+palette = 14= #e7a57d
+palette = 15= #fcd2ba
+
+font-family = "Resample"
+font-style = "Regular"
+font-style-bold = "Bold"
+font-style-italic = "SemiBoldOblique"
+font-style-bold-italic = "BoldOblique"
+font-size = 11
+cursor-style = bar
+adjust-cell-height = 30%
+font-thicken = true
+
+working-directory = /Volumes/Work

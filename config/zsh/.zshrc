@@ -1,73 +1,94 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export PATH="/usr/local/anaconda3/bin:$PATH"
+# Start configuration added by Zim Framework install {{{
+setopt HIST_IGNORE_ALL_DUPS
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+bindkey -e
 
-export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]}
 
-export EMSDK="/volumes/work/emsdk"
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# Initialize modules
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
-source $ZSH/oh-my-zsh.sh
+zstyle ':zim:kubectl' aliases-prefix 'k'
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
 fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+# }}} End configuration added by Zim Framework install
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# aliases
-alias ls='exa --color=always --group-directories-first --icons'
-alias la='exa -al --color=always --group-directories-first --icons --git'
-alias ll='exa -l --color=always --group-directories-first --icons --git'
-alias lt='exa -l --tree --level=2 --color=always --group-directories-first --icons --git'
-alias l.='exa -a | rg "^\."'
-alias icat='kitty +kitten icat'
-alias popy='poetry run python manage.py '
+# config
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# eza
+
+alias ls='eza --color=always --group-directories-first --icons'
+alias la='eza -al --color=always --group-directories-first --icons --git'
+alias ll='eza -l --color=always --group-directories-first --icons --git'
+alias lt='eza -l --tree --level=2 --color=always --group-directories-first --icons --git'
+alias l.='eza -a | rg "^\."'
+
+# neovim
+alias nv='nvim'
+
+# git
+
+function git_current_branch() {
+  local ref
+  ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+alias gco='git checkout'
+alias gst='git status'
+alias gss='git status --short'
+alias gcam='git commit --all --message'
+alias gcasm='git commit --all --signoff --message'
+alias ga='git add'
+alias ggpush='git push origin "$(git_current_branch)"'
+alias ggpull='git pull origin "$(git_current_branch)"'
 
 # Android
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-source /Users/san/.config/broot/launcher/bash/br
+# export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+# export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+# source /Users/san/.config/broot/launcher/bash/br
 
 # initialize starship
 eval "$(starship init zsh)"
 
+# bun completions
+[ -s "/Users/san/.bun/_bun" ] && source "/Users/san/.bun/_bun"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/san/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/san/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/san/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/san/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

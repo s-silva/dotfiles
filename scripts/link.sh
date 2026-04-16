@@ -3,23 +3,27 @@ red=`tput setaf 1`
 cyan=`tput setaf 6`
 reset=`tput sgr0`
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-CONFIG_DIR=$SCRIPT_DIR/../config
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+CONFIG_DIR=$(cd -- "$SCRIPT_DIR/../config" &> /dev/null && pwd)
+
 
 # config links
-ln -s $CONFIG_DIR/nvim $HOME/.config/nvim
-ln -s $CONFIG_DIR/kitty $HOME/.config/kitty
+ln -sF $CONFIG_DIR/nvim $HOME/.config/nvim
+
+mkdir $HOME/projects
+ln -sF $CONFIG_DIR/nvim/bitstream $HOME/projects/bitstream
+ln -sF $CONFIG_DIR/ghostty/config.ghostty "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
 
 # tmux
-ln -s $CONFIG_DIR/tmux/.tmux.conf $HOME/.tmux.conf
+ln -sF $CONFIG_DIR/tmux/.tmux.conf $HOME/.tmux.conf
 
 # zsh
-ln -s $CONFIG_DIR/zsh/.zshrc $HOME/.zshrc
+ln -sF $CONFIG_DIR/zsh/.zshrc $HOME/.zshrc
 
 # starship
-ln -s $CONFIG_DIR/starship/starship.toml $HOME/.config/starship.toml
+ln -sF $CONFIG_DIR/starship/starship.toml $HOME/.config/starship.toml
 
 # lazygit
-ln -s $CONFIG_DIR/lazygit/config.yml "$HOME/Library/Application Support/lazygit/config.yml"
+ln -sF $CONFIG_DIR/lazygit/config.yml "$HOME/Library/Application Support/lazygit/config.yml"
 
 echo "${cyan}[link.sh]${reset} created links"
